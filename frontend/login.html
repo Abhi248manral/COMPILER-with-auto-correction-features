@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — CompilerFix</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="theme-dark">
+
+    <div class="login-wrapper">
+        <!-- Left decorative panel -->
+        <div class="login-hero">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="hero-text">
+                <a href="/" class="back-link"><i class="fa-solid fa-arrow-left"></i> Home</a>
+                <h1>Compiler<span class="hl">Fix</span></h1>
+                <p>Code smarter with intelligent auto-correction across 6 languages.</p>
+            </div>
+        </div>
+
+        <!-- Right form panel -->
+        <div class="login-form-panel">
+            <div class="form-container" id="form-container">
+
+                <!-- Tab Toggle -->
+                <div class="tab-toggle">
+                    <button class="tab active" id="tab-login" onclick="switchTab('login')">Login</button>
+                    <button class="tab" id="tab-register" onclick="switchTab('register')">Register</button>
+                    <div class="tab-slider" id="tab-slider"></div>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
+                    <div class="input-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="login-username" placeholder="Username" required minlength="3"
+                            autocomplete="username">
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="login-password" placeholder="Password" required minlength="4"
+                            autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="submit-btn" id="login-submit">
+                        <span>Login</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
+                    <div class="input-group">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <input type="text" id="reg-username" placeholder="Choose a username" required minlength="3"
+                            autocomplete="username">
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="reg-password" placeholder="Choose a password" required minlength="4"
+                            autocomplete="new-password">
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="reg-confirm" placeholder="Confirm password" required minlength="4"
+                            autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="submit-btn" id="reg-submit">
+                        <span>Create Account</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <!-- Status Message -->
+                <div class="status-msg" id="status-msg"></div>
+
+                <!-- Skip login -->
+                <a href="/editor" class="skip-link">Continue without login →</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

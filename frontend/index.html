@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor — CompilerFix</title>
+    <meta name="description"
+        content="Write and compile code with intelligent auto-correction. Supports C, C++, Python, Java, HTML and CSS.">
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.33.0/min/vs/loader.js"></script>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="theme-dark">
+
+    <!-- Top Bar -->
+    <header class="top-bar glass-panel">
+        <div class="logo">
+            <a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;">
+                <i class="fa-solid fa-code"></i>
+                <span>Compiler<span class="highlight">Fix</span></span>
+            </a>
+        </div>
+
+        <div class="controls">
+            <select id="language-select" class="control-item">
+                <option value="c">C</option>
+                <option value="cpp">C++</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+            </select>
+
+            <button id="theme-toggle" class="control-item btn-icon" title="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+
+        <div class="actions">
+            <button id="btn-fix" class="btn btn-secondary">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-Fix
+            </button>
+            <button id="btn-compile" class="btn btn-primary">
+                <i class="fa-solid fa-play"></i> Run
+            </button>
+            <span id="user-badge" class="user-badge" style="display:none;"></span>
+            <a href="/login" id="nav-login-btn" class="btn btn-icon" title="Login">
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+
+        <!-- Left Panel: Errors -->
+        <aside class="panel left-panel glass-panel" id="panel-errors">
+            <div class="panel-header">
+                <h3><i class="fa-solid fa-triangle-exclamation"></i> Errors</h3>
+                <span class="badge" id="error-count">0</span>
+            </div>
+            <div class="panel-content" id="error-list">
+                <div class="empty-state">No errors detected</div>
+            </div>
+        </aside>
+
+        <!-- Center: Editor -->
+        <section class="editor-container glass-panel">
+            <div id="monaco-editor"></div>
+            <!-- Diff View Overlay -->
+            <div id="diff-view" class="hidden">
+                <div class="diff-header">
+                    <span>Fixed Code Preview</span>
+                    <button class="btn-close-diff"><i class="fa-solid fa-times"></i> Close</button>
+                </div>
+                <div id="diff-content"></div>
+            </div>
+            <!-- HTML Preview Overlay -->
+            <div id="preview-view" class="hidden">
+                <div class="diff-header">
+                    <span>HTML/CSS Preview</span>
+                    <button class="btn-close-preview"><i class="fa-solid fa-times"></i> Close</button>
+                </div>
+                <iframe id="preview-frame" sandbox="allow-scripts"
+                    style="width:100%;height:100%;border:none;background:#fff;"></iframe>
+            </div>
+        </section>
+
+        <!-- Right Panel: Fixes -->
+        <aside class="panel right-panel glass-panel" id="panel-fixes">
+            <div class="panel-header">
+                <h3><i class="fa-solid fa-check-double"></i> Applied Fixes</h3>
+            </div>
+            <div class="panel-content" id="fix-list">
+                <div class="empty-state">No fixes applied yet</div>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Bottom Panel: Output -->
+    <footer class="bottom-panel glass-panel expanded">
+        <div class="panel-header">
+            <h3><i class="fa-solid fa-terminal"></i> Output</h3>
+            <div class="panel-actions">
+                <button class="btn-icon" id="btn-clear-output"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn-icon" id="btn-toggle-output"><i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+        </div>
+        <div class="panel-content token active" id="output-console">
+            <pre class="console-text">Ready to compile...</pre>
+        </div>
+    </footer>
+
+    <!-- JS Modules -->
+    <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>

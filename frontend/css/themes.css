@@ -1,0 +1,53 @@
+/* Dark Theme (Default) */
+body.theme-dark {
+    --bg-app: #121212;
+    --bg-panel: rgba(30, 30, 30, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+
+    --primary: #3b82f6;
+    /* Blue */
+    --primary-hover: #2563eb;
+
+    --secondary: #8b5cf6;
+    /* Purple */
+    --secondary-hover: #7c3aed;
+
+    --success: #10b981;
+    --error: #ef4444;
+    --warning: #f59e0b;
+
+    --console-bg: #1e1e1e;
+    --console-text: #d4d4d4;
+
+    --diff-bg-del: rgba(239, 68, 68, 0.2);
+    --diff-bg-add: rgba(16, 185, 129, 0.2);
+}
+
+/* Light Theme */
+body.theme-light {
+    --bg-app: #f3f4f6;
+    --bg-panel: rgba(255, 255, 255, 0.8);
+    --border-color: rgba(0, 0, 0, 0.1);
+
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    --secondary: #7c3aed;
+    --secondary-hover: #6d28d9;
+
+    --success: #059669;
+    --error: #dc2626;
+    --warning: #d97706;
+
+    --console-bg: #ffffff;
+    --console-text: #1f2937;
+
+    --diff-bg-del: rgba(220, 38, 38, 0.1);
+    --diff-bg-add: rgba(5, 150, 105, 0.1);
+}

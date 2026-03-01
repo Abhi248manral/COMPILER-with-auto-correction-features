@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+python-multipart
+# Tree-sitter bindings and C grammar
+tree-sitter
+tree-sitter-c

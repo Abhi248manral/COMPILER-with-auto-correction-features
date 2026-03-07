@@ -1,0 +1,233 @@
+/* Glassmorphism Panels */
+.glass-panel {
+    background: var(--bg-panel);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+/* Header */
+.top-bar {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo .highlight {
+    color: var(--primary);
+}
+
+.controls,
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 6px 16px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.btn-icon {
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    padding: 4px 8px;
+}
+
+.btn-icon:hover {
+    color: var(--text-main);
+}
+
+/* Main Grid Layout */
+.workspace {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+    gap: 10px;
+}
+
+.panel {
+    width: 250px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.left-panel {
+    border-right: none;
+}
+
+.right-panel {
+    border-left: none;
+}
+
+.panel-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editor-container {
+    flex: 1;
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#monaco-editor {
+    width: 100%;
+    height: 100%;
+}
+
+/* Bottom Output */
+.bottom-panel {
+    height: 150px;
+    /* Initial height */
+    margin: 0 10px 10px 10px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    transition: height 0.3s ease;
+}
+
+
+/* Errors & Fixes Items */
+.error-item,
+.fix-item {
+    padding: 8px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.error-item:hover,
+.fix-item:hover {
+    transform: translateX(2px);
+    border-color: var(--border-color);
+}
+
+.error-item.selected {
+    border-left: 3px solid var(--error);
+}
+
+.badge {
+    background: var(--error);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+}
+
+/* ─── Fixed Code Preview Modal ─────────────────────────────────── */
+
+/* Overlay — position:fixed so height is viewport-relative, NOT parent-dependent */
+#diff-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-app);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header bar — fixed at top, never scrolls */
+.diff-header {
+    padding: 10px 15px;
+    background: var(--bg-panel);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Scrollable content area — THIS is the only scroll container */
+#diff-content {
+    flex: 1;
+    min-height: 0;
+    max-height: calc(100vh - 52px);
+    /* viewport height minus header */
+    overflow-y: auto;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* smooth scroll on iOS */
+}
+
+/* Bottom Output — scrollable */
+#output-console {
+    background-color: var(--console-bg);
+    color: var(--console-text);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    padding: 10px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.hidden {
+    display: none !important;
+}
